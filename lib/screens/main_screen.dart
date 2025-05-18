@@ -196,12 +196,12 @@ class _MainScreenState extends State<MainScreen> {
           SliverToBoxAdapter(child: ServicesSection(key: _sectionKeys[2])),
           SliverToBoxAdapter(child: GallerySection(key: _sectionKeys[3])),
           SliverToBoxAdapter(child: ContactSection(key: _sectionKeys[4])),
-          const SliverToBoxAdapter(child: FooterSection()),
+          const SliverToBoxAdapter(child: CustomFooter()),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF22C55E),
-        onPressed: () => _launchUrl('https://wa.me/9785550244'),
+        onPressed: () => _launchUrl('https://wa.me/919785550244'),
         child: const Icon(FontAwesomeIcons.whatsapp, color: Colors.white),
       ),
     );
