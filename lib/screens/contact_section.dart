@@ -19,10 +19,9 @@ class ContactSection extends StatelessWidget {
           children: [
             Text(
               'Get in Touch',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 48),
@@ -37,7 +36,7 @@ class ContactSection extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(32.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       _buildTextField(
                         controller: nameController,
@@ -78,6 +77,11 @@ class ContactSection extends StatelessWidget {
                           child: const Text('Send Message'),
                         ),
                       ),
+
+                      const SizedBox(height: 16),
+                      const Text('Phone: +91-9785550244'),
+                      const Text('Email: Shrigopalstones@gmail.com'),
+                      const Text('GST: 08AKFPK7179M1ZG'),
                     ],
                   ),
                 ),
@@ -101,10 +105,11 @@ class ContactSection extends StatelessWidget {
         hintText: hintText,
         filled: true,
         fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
         ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(8),

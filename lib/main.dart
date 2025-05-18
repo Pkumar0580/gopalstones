@@ -3,11 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'screens/main_screen.dart';
 
 void main() {
-  runApp(const StoneCraftWebApp());
+  runApp(MyWebApp());
 }
 
-class StoneCraftWebApp extends StatelessWidget {
-  const StoneCraftWebApp({super.key});
+class MyWebApp extends StatelessWidget {
+  const MyWebApp({super.key});
 
   @override
   Widget build(BuildContext context) {
