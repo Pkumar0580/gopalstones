@@ -151,6 +151,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomFooter extends StatelessWidget {
   const CustomFooter({super.key});
@@ -213,11 +214,11 @@ class CustomFooter extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.facebook, color: Colors.white70),
+              Icon(FontAwesomeIcons.facebook, color: Colors.white70),
               const SizedBox(width: 12),
-              Icon(Icons.camera_alt, color: Colors.white70),
+              Icon(FontAwesomeIcons.instagram, color: Colors.white70),
               const SizedBox(width: 12),
-              Icon(Icons.web, color: Colors.white70),
+              Icon(FontAwesomeIcons.whatsapp, color: Colors.white70),
             ],
           ),
 
