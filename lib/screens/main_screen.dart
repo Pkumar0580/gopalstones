@@ -141,8 +141,9 @@ class _MainScreenState extends State<MainScreen> {
           SliverAppBar(
             pinned: true,
             backgroundColor: Colors.grey[800],
+            iconTheme: const IconThemeData(color: Colors.white),
             title: const Text(
-              'Shree Gopal Stones',
+              'Shri Gopal Stones',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,

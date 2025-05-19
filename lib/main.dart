@@ -13,7 +13,7 @@ class MyWebApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Shree Gopal Stones',
+      title: 'Shri Gopal Stones',
       theme: ThemeData(
         primarySwatch: Colors.grey,
         scaffoldBackgroundColor: Colors.grey[100],

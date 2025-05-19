@@ -166,7 +166,7 @@ class CustomFooter extends StatelessWidget {
         children: [
           // Business Name
           Text(
-            'Shrigopal Stones',
+            'Shri Gopal Stone & Suppliers',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -214,11 +214,21 @@ class CustomFooter extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(FontAwesomeIcons.facebook, color: Colors.white70),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(FontAwesomeIcons.facebook, color: Colors.white70),
+              ),
+
               const SizedBox(width: 12),
-              Icon(FontAwesomeIcons.instagram, color: Colors.white70),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(FontAwesomeIcons.instagram, color: Colors.white70),
+              ),
               const SizedBox(width: 12),
-              Icon(FontAwesomeIcons.whatsapp, color: Colors.white70),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(FontAwesomeIcons.whatsapp, color: Colors.white70),
+              ),
             ],
           ),
 
