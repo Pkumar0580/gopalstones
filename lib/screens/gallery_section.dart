@@ -27,23 +27,9 @@ class GallerySection extends StatelessWidget {
                 spacing: 24,
                 runSpacing: 24,
                 alignment: WrapAlignment.center,
-                children:
-                    images.map((image) {
-                      return MouseRegion(
-                        cursor: SystemMouseCursors.zoomIn,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          transform: Matrix4.identity(),
-                          child: SizedBox(
-                            width: 300,
-                            child: Card(
-                              elevation: 4,
-                              child: Image.asset(image, fit: BoxFit.fill),
-                            ),
-                          ),
-                        ),
-                      );
-                    }).toList(),
+                children: images.map((image) {
+                  return _GalleryTile(image: image);
+                }).toList(),
               ),
             ),
           ],
@@ -53,16 +39,50 @@ class GallerySection extends StatelessWidget {
   }
 }
 
-class ShimmerPlaceholder extends StatelessWidget {
-  const ShimmerPlaceholder({super.key});
+class _GalleryTile extends StatefulWidget {
+  final String image;
+  const _GalleryTile({required this.image});
+
+  @override
+  State<_GalleryTile> createState() => _GalleryTileState();
+}
+
+class _GalleryTileState extends State<_GalleryTile> {
+  bool _hover = false;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.grey[300],
-      child: const Center(child: CircularProgressIndicator()),
+    return MouseRegion(
+      cursor: SystemMouseCursors.zoomIn,
+      onEnter: (_) => setState(() => _hover = true),
+      onExit: (_) => setState(() => _hover = false),
+      child: AnimatedScale(
+        scale: _hover ? 1.02 : 1.0,
+        duration: const Duration(milliseconds: 150),
+        child: Stack(
+          children: [
+            SizedBox(
+              width: 300,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(widget.image, fit: BoxFit.cover),
+              ),
+            ),
+            AnimatedOpacity(
+              duration: const Duration(milliseconds: 150),
+              opacity: _hover ? 1 : 0,
+              child: Container(
+                width: 300,
+                height: 225,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.black.withValues(alpha: 0.2),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

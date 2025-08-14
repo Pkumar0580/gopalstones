@@ -152,6 +152,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomFooter extends StatelessWidget {
   const CustomFooter({super.key});
@@ -209,6 +210,23 @@ class CustomFooter extends StatelessWidget {
           ),
 
           const SizedBox(height: 16),
+
+          // Legal links
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 16,
+            runSpacing: 8,
+            children: [
+              TextButton(
+                onPressed: () => context.go('/terms'),
+                child: const Text('Terms & Conditions'),
+              ),
+              TextButton(
+                onPressed: () => context.go('/privacy'),
+                child: const Text('Privacy Policy'),
+              ),
+            ],
+          ),
 
           // Social Media (Placeholder icons)
           Row(

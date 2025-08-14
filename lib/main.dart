@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'screens/main_screen.dart';
+import 'package:flutter/gestures.dart';
+// import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
+import 'routes/app_router.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'theme/app_theme.dart';
 
 void main() {
+  // Use path-based URLs on the web (no #)
+  usePathUrlStrategy();
   runApp(MyWebApp());
 }
 
@@ -11,35 +17,42 @@ class MyWebApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final GoRouter router = createRouter();
+
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Shri Gopal Stones',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-        scaffoldBackgroundColor: Colors.grey[100],
-        textTheme: GoogleFonts.poppinsTextTheme(
-          const TextTheme(
-            headlineLarge: TextStyle(
-              fontSize: 48,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-            headlineMedium: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-            headlineSmall: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-            bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
-            bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
-          ),
+      scrollBehavior: const _AppScrollBehavior(),
+      theme: AppTheme.buildTheme().copyWith(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.linux: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.macOS: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.windows: FadeUpwardsPageTransitionsBuilder(),
+          },
         ),
       ),
-      home: const MainScreen(),
+      routerConfig: router,
     );
   }
+}
+
+class _AppScrollBehavior extends MaterialScrollBehavior {
+  const _AppScrollBehavior();
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    // Smooth, platform-appropriate scrolling with no overscroll glow on web/desktop.
+    return const ClampingScrollPhysics();
+  }
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => const {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    PointerDeviceKind.trackpad,
+    PointerDeviceKind.stylus,
+  };
 }
